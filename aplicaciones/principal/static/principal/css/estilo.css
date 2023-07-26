@@ -1,0 +1,90 @@
+
+
+.divborder{
+    background-color: rgb(230, 223, 223);
+
+    /*width: 50%;*/
+    /*border-width: 26rem;*/
+    border-radius: 0.5rem;
+    /*border-left: 10px solid;*/
+    /*border-left-style: inset;*/
+    /*border-bottom: 10px solid;*/
+
+    box-shadow: 0 0 0 2px rgb(8, 48, 179), -8px 12px 0 0 rgb(8, 48, 179);
+    /*box-shadow: inset 19px -12px 0px 0px  rgba(0,0,0,0.1);*/
+    
+    /*box-shadow: blue -5px 5px -10px -10px, rgb(255, 255, 255);*/
+    /*box-shadow: -19px 0px 0px 8px rgba(226, 29, 15, 0.877);*/
+    /* 10px -10px 0px -3px, rgb(31, 193, 27) 10px -10px, rgb(255, 255, 255) 20px -20px 0px -3px, rgb(255, 217, 19) 20px -20px, rgb(255, 255, 255) 30px -30px 0px -3px, rgb(255, 156, 85) 30px -30px, rgb(255, 255, 255) 40px -40px 0px -3px, rgb(255, 85, 85) 40px -40px;*/
+
+    /*box-shadow: rgba(230, 73, 0, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(22, 9, 206, 0.05) -25px 25px;
+*/
+    /*border-style: inset;*/
+    /*border-color: coral;*/
+    /*border-width: 10px;*/
+    /*transform: rotate3d(0, 30, 0, 25deg);*/  /* Equivale a rotateY(25deg) */
+}
+
+.centrado{
+
+    display:flex;
+justify-content: center;
+align-items:center;
+
+
+}
+
+.letraTamaño{
+
+    font-size:15em;
+    /*border: 2px solid red;*/
+}
+
+.letraHora{
+    font-size:300%
+}
+
+.imagenPrimaria{
+    /*border: 2px solid red;*/
+    width:30% !important;
+}
+
+.imagenSegunda{
+
+    /*border: 2px solid red;*/
+    /*width:30% !important;*/
+    display: inline-block;
+    width:30% !important;
+    /*height: 20em;*/
+}
+
+
+
+
+/**********************************************************/
+
+.h1unico {
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+    user-select: none !important;
+    color: rgb(00, 00, 00);
+    font-family: cursive;
+    font-size: 500%;
+    text-align: center;
+  }
+
+  .abs-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50vh;
+  }
+
+.wiki{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+}

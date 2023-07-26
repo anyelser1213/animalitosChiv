@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load tag_consultas_resultados %}
+{% load static %}
+{% block titulo %}Resultados {% endblock %}
+
+
+
+{% block EnlacesPersonalizados %}
+
+    <link rel="stylesheet" href="{% static 'principal/css/estilo.css' %}">
+
+    <style>
+
+      table{
+        width:100%;
+      }
+
+
+    </style>
+
+    
+
+    
+
+{% endblock %}
+
+    
+{% block contenedor %} 
+
+<div class="container mt-5 border">
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-12 ">
+      <a href="{% url 'principal:index' %}">
+      <img src="{% static 'principal/img/casa.png' %}" width="6%">
+    </a>
+    </div>
+  </div>
+
+    <br>
+    <h2>Semana: {{fecha_semana_inicial}} al {{fecha_semana_final}} </h2>
+
+  
+    <div class="row table-responsive ">
+        <div clas="table">
+          <table class="table table-bordered" >
+              <thead>
+              <tr style="width:200px;">
+                  <th>Hora</th>
+                  <th>Lunes</th>
+                  <th>Martes</th>
+                  <th>Miercoles</th>
+                  <th>Jueves</th>
+                  <th>Viernes</th>
+                  <th>Sabado</th>
+                  <th>Domingo</th>
+              </tr>
+              </thead>
+              <tbody>
+                {% for hora in horas %}
+                  <tr style="width:100%;height:100%;" >
+                      <td >{{hora}}</td>
+                      {% for dia in dias %}
+                      {% obtener_resultados semana dia hora %}
+                      {% endfor %}
+
+                  </tr>
+              {% endfor %}
+              </tbody>
+          </table>
+          
+      </div>
+    </div>
+
+  <div class="row align-items-center">
+    <div class="col col-lg-6 text-center">
+      {% formateo_fecha fecha_semana_inicial as fecha_inicial %}
+      <a href="{% url 'resultados:SemanaAnterior' fecha_inicial semana %}"><button type="button" class="btn btn-primary btn-lg btn-sm ">Semana Anterior  </button></a>
+      
+    </div>
+
+    <div class="col col-lg-6 text-center">
+      {% if semana_actual %}
+      
+      {% else %}
+        {% formateo_fecha fecha_semana_final as fecha_final %}
+        <a href="{% url 'resultados:SemanaSiguiente' fecha_inicial semana %}"><button type="button" class="btn btn-primary btn-lg btn-sm">Semana Siguiente  </button></a>
+      {% endif %}
+    </div>
+  </div>
+
+</div>
+     
+      
+            
+          
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% block titulo %}Resultados {% endblock %}
+
+{% block EnlacesPersonalizados %}
+
+    <link rel="stylesheet" href="{% static 'principal/css/estilo.css' %}">
+
+    
+
+    
+
+{% endblock %}
+
+    
+{% block contenedor %} 
+
+<div class="container mt-5 border">
+
+  <div class="row justify-content-md-center">
+    <div class="col col-lg-4">
+      <a href="{% url 'principal:index' %}">
+        <img src="{% static 'principal/img/casa.png' %}" width="10%">
+      </a>
+    </div>
+    <div class="col col-lg-4">
+      <a href="{% url 'resultados:listaResultados' %}"><button type="button" class="btn btn-primary btn-lg btn-sm">Resultados anteriores <img src="{% static 'principal/img/lupa.png' %}" width="8%"> </button></a>
+    </div>
+    <div class="col col-lg-4">
+
+      
+    </div>
+    
+  </div>
+
+  {% for resultado in resultados %}
+
+               
+    <div class="row justify-content-center text-center align-items-center  mt-5 ms-5 mx-5 mb-5 divborder  ">
+      <div class="text-center ">
+        <!--Aqui se colocaran los resultados-->
+        <div class="card-body  ">
+          <h5 class="card-title pb-3">000{{resultado.sorteo}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"></h6>
+
+              <img src="{{resultado.animalito.imagen.url}}" class="imagenPrimaria">
+              <p class="d-inline letraTamaño ">-{{resultado.terminal}}</p>
+              <img src="{{resultado.signo.imagen.url}}" class="imagenSegunda " >
+              
+          <h5 class="card-title pt-3 letraHora">{{resultado.hora}}</h5>
+          
+          <!--
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+          -->
+        </div>
+      </div>
+      
+    </div>                                               
+
+                                                        
+                                                        
+  {% endfor %}
+
+  
+
+
+</div>
+     
+      
+            
+          
+{% endblock %}

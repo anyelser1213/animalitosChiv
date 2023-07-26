@@ -1,0 +1,91 @@
+<!doctype html>
+{% load static %}
+<html lang="es">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block titulo %}BASE {% endblock %}</title> 
+
+    {% block EnlacesBootstrap5 %}
+
+  
+    {% endblock %}
+
+    {% block EnlacesPlantilla_Base %}
+
+    <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,400italic'>
+    <link rel="stylesheet" type="text/css" href="{% static 'plantilla_104/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'plantilla_104/font-awesome/css/font-awesome.min.css' %}">    
+    <link rel="stylesheet" type="text/css" href="{% static 'plantilla_104/css/style.css' %}">
+
+      <!-- Icono de la pagina -->
+      <link id="iconPagWeb" rel="shortcut icon" href="{% static 'principal/img/iconoanimalitos.jpeg' %}" type="image/x-icon">
+      
+    {% endblock %}
+
+
+    {% block EnlacesPersonalizados %}
+
+    
+
+    {% endblock %}
+    
+    
+
+  </head>
+
+  <body >
+    
+    
+    {% block contenedor %} 
+
+
+
+    {% endblock %}
+  
+
+    
+    
+
+    
+    
+
+    {% block EnlacesGraficas_js %}
+
+      
+    
+    {% endblock %}
+
+
+    {% block EnlacesListado_js %}
+
+       
+
+    {% endblock %}
+
+
+    {% block EnlacesBootstrap5js %}
+
+
+          
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+          <!-- JavaScript -->
+    <script src="{% static 'plantilla_104/js/jquery-1.11.3.min.js' %}"></script>
+    <script src="{% static 'plantilla_104/js/bootstrap.min.js'%}"></script>
+    {% endblock %}
+
+    {% block EnlacesPlantillas_base %}
+
+    
+
+    
+    {% endblock%}
+
+
+    
+  </body>
+</html>
