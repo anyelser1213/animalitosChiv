@@ -38,13 +38,13 @@ class ListaResultados(TemplateView):
         locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
 
         #Esta funcion esta relacionada a las fechas en python
-        #informacionCalendario()
+        informacionCalendario()
 
         #Para el calendario
         #calendarioPruebas()
 
         #dias de la semana
-        #print(list(calendar.day_name))
+        print(list(calendar.day_name))
 
 
         #dias de los meses
@@ -65,7 +65,7 @@ class ListaResultados(TemplateView):
 
         #Asi obtenemos la semana actual
         context['semana'] = SEM.now().isocalendar()[1]
-        print("semana ingresada: ",context['semana'])
+        #print("semana ingresada: ",context['semana'])
         context['semana_actual'] = True
 
         #Asi obtenemos la fecha inicial y final

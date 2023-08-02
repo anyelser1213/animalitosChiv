@@ -7,6 +7,7 @@ from animalitoschinos.settings import MEDIA_URL, STATIC_URL
 
 #Para establecer fechas y horarios por defectos
 from datetime import datetime
+from datetime import time
 import calendar
 import locale
 
@@ -18,6 +19,96 @@ def calcularIncremento():
     #print(Resultados.objects.all())
     cantidad = 1 # int(Resultados.objects.all().count()+1)
     return int(Resultados.objects.all().count()+1)
+
+#establecer Dia actual
+def establecerDiaActual():
+
+    #Este locale es para cambiar el idioma al español
+    locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+    tiempo = datetime.now()
+    
+    #dia de la semana
+    print(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])
+    cantidad = 1 # int(Resultados.objects.all().count()+1)
+    print(Dia.objects.filter(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])))
+    return Dia.objects.get(dia_semana="miércoles").id
+
+
+#establecer Hora Siguiente de los resultados
+def establecerHoraActual():
+
+    #Este locale es para cambiar el idioma al español
+    locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+    tiempo = datetime.now()
+    #print("Numero de la semana actual: ",numero_semana[1])
+
+    #print("-----------------------------")
+            
+
+
+    #Ingresando num de semana
+    #self.semana = datetime(self.fecha_resultado.year, self.fecha_resultado.month, self.fecha_resultado.day, 00, 00, 00, 0).isocalendar()[1]
+
+    #lunes = 0
+    #print("Numero del dia de la semana: ",(calendar.weekday(tiempo.year,tiempo.month,tiempo.day)))
+
+    #dia de la semana
+    #print(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])
+    
+    #numero semana
+    semana_actual = datetime(tiempo.year, tiempo.month, tiempo.day, 00, 00, 00, 0).isocalendar()[1]
+
+    #dia actual
+    dia_hoy = Dia.objects.get(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])).id
+
+    hora_11_00 = Hora.objects.get(hora=time(11,0,00))
+    hora_12_00 = Hora.objects.get(hora=time(12,0,00))
+    hora_01_00 = Hora.objects.get(hora=time(13,0,00))
+    hora_04_00 = Hora.objects.get(hora=time(16,0,00))
+    hora_07_00 = Hora.objects.get(hora=time(19,0,00))
+
+    print("semana:", semana_actual)
+
+
+    print("11:00am: ",Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_11_00.id).count())
+    #Comenzamos los condicionales
+    #hoy con la hora de las 11:00am
+    if Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_11_00.id).count() < 1:
+        print("Probando con las 11:00am")
+        return hora_11_00.id
+    
+    #hoy con la hora de las 12:00pm
+    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_12_00.id).count() < 1:
+        print("Probando con las 12:00am")
+        return hora_12_00.id
+
+    #hoy con la hora de las 01:00pm
+    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_01_00.id).count() < 1:
+        return hora_01_00.id
+
+    #hoy con la hora de las 04:00pm
+    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_04_00.id).count() < 1:
+        return hora_04_00.id
+
+    #hoy con la hora de las 07:00pm
+    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_07_00.id).count() < 1:
+        return hora_07_00.id
+
+    else:
+        print("Probando con las 11:00am")
+        return hora_11_00.id
+
+    
+    
+
+
+
+
+
+    print(Dia.objects.filter(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])))
+    return Dia.objects.get(dia_semana="miércoles").id
+
+
 
 #Funcion para agregar carpetas al usuario
 def imagen_animalitos(instance, filename):
@@ -148,8 +239,8 @@ class Resultados(models.Model):
     #Para saber el dia y la hora
     #Aqui comenzamos los campos de resultados
     semana = models.PositiveIntegerField(blank=True,null=True)
-    dia = models.ForeignKey(Dia,on_delete=models.CASCADE, blank=False,null=False)#Solo hora
-    hora = models.ForeignKey(Hora,on_delete=models.CASCADE, blank=False,null=False)#Solo hora
+    dia = models.ForeignKey(Dia,default=establecerDiaActual,on_delete=models.CASCADE, blank=False,null=False)
+    hora = models.ForeignKey(Hora,default=establecerHoraActual,on_delete=models.CASCADE, blank=False,null=False)#Solo hora
     
     animalito = models.ForeignKey(Animalitos,on_delete=models.CASCADE,blank=False, null=False)
     terminal= models.PositiveIntegerField(default=0)

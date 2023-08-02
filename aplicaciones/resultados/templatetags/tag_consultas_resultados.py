@@ -10,7 +10,9 @@ register = template.Library()
 def obtener_resultados(semana,dia,hora):
 
     #print("Entramos en crear los TR")
+    #print("semana: ", semana, "dia: ",dia," hora:",hora)
     dias_semana = Dia.objects.all()
+    #print("Vantidad: ",Resultados.objects.filter(semana=semana,dia=dia,hora=hora).count())
 
     if Resultados.objects.filter(semana=semana,dia=dia,hora=hora).count()>0:
         resultado = Resultados.objects.get(semana=semana,dia=dia,hora=hora)
@@ -30,6 +32,8 @@ def obtener_resultados(semana,dia,hora):
         'resultado':resultado,
         #'ruta':"/media/"+categoria_nombre+"/"+subcategoria_nombre+"/"
     }
+
+
 
 @register.simple_tag
 def formateo_fecha(fecha):

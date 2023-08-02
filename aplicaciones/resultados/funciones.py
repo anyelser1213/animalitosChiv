@@ -106,7 +106,7 @@ def informacionCalendario():
     #dia de la semana
     print(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])
 
-    print(calendar.firstweekday())
+    #print(calendar.firstweekday())
 
 
 #Funciones para las fechas

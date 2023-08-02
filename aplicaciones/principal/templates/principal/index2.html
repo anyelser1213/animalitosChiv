@@ -24,9 +24,10 @@
             <aside class="main-navigation">
                 <div class="main-menu">
 
+
                     <div class="menu-container">
                         <div class="block-keep-ratio block-keep-ratio-2-1 block-width-full home">                                    
-                            <a href="index.html" class="block-keep-ratio__content  main-menu-link">
+                            <a href="{% url 'principal:index' %}" class="block-keep-ratio__content  main-menu-link">
                                 <span class="main-menu-link-text">
                                     INICIO    
                                 </span>                                        
@@ -36,7 +37,7 @@
 
                     <div class="menu-container">                                
                         <div class="block-keep-ratio  block-keep-ratio-1-1  block-width-half  pull-left  about-main">                                    
-                            <a href="about.html" class="main-menu-link about block-keep-ratio__content flexbox-center">
+                            <a href="{% url 'resultados:listaResultados' %}" class="main-menu-link about block-keep-ratio__content flexbox-center">
                                 <i class="fa fa-user fa-4x main-menu-link-icon"></i>
                                 RESULTADOS
                             </a>                                    
@@ -54,101 +55,263 @@
                 </div> <!-- main-menu -->
             </aside> <!-- main-navigation -->
 
-            <div class="content-main">
-                <div class="row margin-b-30">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="banner-main-home">                                
-                            <div class="banner-main-hodme">
-                                <div class="heading">
-                                    <h1>SORTEO </h1>
-                                    <p class="text-uppercase">{% ceros_en_sorteo resultadosUltimo.sorteo %}</p>
-                                </div>
-                                
-                                <div class="row ">
-                                  <div class="  col-xs-12 col-sm-12 col-md-5 col-lg-5">
-
-                                      <img src="{{resultadosUltimo.animalito.imagen.url}}" alt="Image" class="img-responsive">
-                                     
-                                  </div>
-                                  <div class="abs-center  col-xs-12 col-sm-12 col-md-2 col-lg-2">
-                                     
-                                      
-                                      <h1 class="h1unico">{{resultadosUltimo.terminal}} </h1>
-                                  </div>
-                                  <div class=" col-xs-12 col-sm-12 col-md-5 col-lg-5">
-                                      <img src="{{resultadosUltimo.signo.imagen.url}}" alt="Image" class="img-responsive">
-                                     
-                                  </div>
-                            </div>
-                            
-                          </div>
-
-                            
-                       
-                          </div>                        
-                    </div>    
-                </div>
-
-                
-                
-               
-            </div> <!-- .content-main -->
+            
 
             <div class="content-main">
                 
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        
                         <div class="box bottom-main">
                             <div class="info float-container">
                                 <div class="col-sm-12 bottom-title">
-                                    <h3 class="text-uppercase">Proin gravida nibhvel</h3>
-                                    <h4 class="text-uppercase">mauris vitae erat</h4>
+                                    <h3 class="text-uppercase">RESULTADOS DEL DIA DE HOY</h3>
+                                    <h4 class="text-uppercase"></h4>
                                 </div>
-                                <div class="row margin-b-30">
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-4.jpg' %}" alt="Image">
-                                            <p class="first">Sollicitudin nibh</p>    
-                                        </div>                                      
-                                    </div>
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-5.jpg' %}" alt="Image">
-                                            <p class="second">duis sedio amiet</p>    
-                                        </div>                                      
-                                    </div>
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-6.jpg' %}" alt="Image">
-                                            <p class="third">Nec sagittis seim</p>    
-                                        </div>                                      
-                                    </div>
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-6.jpg' %}" alt="Image">
-                                            <p class="third">Nec sagittis seim</p>    
-                                        </div>                                      
-                                    </div>
+                                <div class="row ">
 
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-6.jpg' %}" alt="Image">
-                                            <p class="third">Nec sagittis seim</p>    
-                                        </div>                                      
-                                    </div>
+                                    <!--SORTEO 11:00AM-->
+                                    {% if resultado11am %}
 
-                                    <div class="col-xxs-12 col-xs-6 col-sm-6 col-md-4 col-lg-4">
-                                        <div class="bottom-img">
-                                            <img src="{% static 'plantilla_104/images/home-img-6.jpg' %}" alt="Image">
-                                            <p class="third">Nec sagittis seim</p>    
-                                        </div>                                      
-                                    </div>
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultado11am.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">11:00am</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultado11am.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultado11am.terminal}}</p>
+                                                <img src="{{resultado11am.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">11:00am</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+
+
+                                    <!--SORTEO 12:00PM-->
+                                    {% if resultado12pm %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultado12pm.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">12:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultado12pm.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultado12pm.terminal}}</p>
+                                                <img src="{{resultado12pm.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">12:00am</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+
+                                    <!--SORTEO 01:00PM-->
+                                    {% if resultado01pm %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultado01pm.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">01:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultado01pm.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultado01pm.terminal}}</p>
+                                                <img src="{{resultado01pm.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">01:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+                                    
+
+                                    <!--SORTEO 04:00PM-->
+                                    {% if resultado04pm %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultado04pm.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">04:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultado04pm.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultado04pm.terminal}}</p>
+                                                <img src="{{resultado04pm.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">04:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+
+                                    <!--SORTEO 07:00PM-->
+                                    {% if resultado07pm %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultado07pm.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">07:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultado07pm.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultado07pm.terminal}}</p>
+                                                <img src="{{resultado07pm.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">07:00pm</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+
+                                    <!--SORTEO ESPECIAL-->
+                                    {% if resultadoEspecial %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">{% ceros_en_sorteo resultadoEspecial.sorteo %}</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">ESPECIAL</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{{resultadoEspecial.animalito.imagen.url}}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">-{{resultadoEspecial.terminal}}</p>
+                                                <img src="{{resultadoEspecial.signo.imagen.url}}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% else %}
+
+                                        <div class="margen-personal col-xxs-12  col-xs-6 col-sm-6 col-md-4 col-lg-4 ">
+                                            <div class="heading">
+                                                <h1>SORTEO:  <p class=" maspequeñoTexto">...</p></h1>
+                                                <p class="text-uppercase masgrandeTexto">ESPECIAL</p>
+                                            </div>
+
+                                            <div class="cajaPrueba">
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                <p class="text-uppercase parrafoPersonal">...</p>
+                                                <img src="{% static 'plantilla_104/images/fondo-default.png' %}" class="ImagenPersonal">
+                                                
+                                            </div>
+                                            
+                                                                                
+                                        </div>
+
+                                    {% endif %}
+
+                                    
                                     
                                 </div>
-                                <p class="bottom-desc">Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo. </p><hr />
                                 <div class="col-sm-12 location-main"> 
                                     <div class="pull-right bottom-user">
-                                        <a href="#"><i class="fa fa-caret-right"></i><span>READ MORE</span></a>
+                                        <a href="#"><i class="fa fa-caret-right"></i><span>LEER MAS</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -162,9 +325,7 @@
       
       <footer class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 footer">
-              <p class="copyright">Copyright © 2016 Company Name 
-              
-              | Design: <a rel="nofollow" href="http://www.templatemo.com" target="_parent">template mo</a></p>
+              <p class="copyright">Copyright © 2023 Rejuntao </p>
           </div>    
       </footer>  <!-- .row -->      
   </div> <!-- .container -->

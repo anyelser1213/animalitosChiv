@@ -1,16 +1,16 @@
 
 {% if resultado %}
-<td style="width:200px;height:200px;">
+<td style="width:300px;height:300px;">
     <div class="container">
         <div class="row ">
-            <div class="col-md-4 col-sm-2">
-                <p>Sorteo:</p>
-                <p class="d-inline-block ">{{resultado.sorteo}}</p>
+            <div class="col-md-12 col-sm-12">
+                <p>Sort#{{resultado.sorteo}}</p>
+                <p class="d-inline-block "></p>
             </div>
             <div class="col-md-8 col-sm-10">
-                <img src="{{resultado.animalito.imagen.url}}" width=40% >
-                <p class="d-inline-block ">{{resultado.terminal}}</p>
-                <img src="{{resultado.signo.imagen.url}}" width=40% >
+                <img src="{{resultado.animalito.imagen.url}}" width=160% >
+                <p class="d-inline-block letraGrande  ">Term {{resultado.terminal}}</p>
+                <img src="{{resultado.signo.imagen.url}}" width=160% >
             </div>
             
           </div>
