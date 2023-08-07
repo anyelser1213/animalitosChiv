@@ -24,21 +24,21 @@ def calcularIncremento():
 def establecerDiaActual():
 
     #Este locale es para cambiar el idioma al español
-    locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+    locale.setlocale(locale.LC_ALL,"es_ES.UTF-8")
     tiempo = datetime.now()
     
     #dia de la semana
-    print(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])
+    print("dia de hoy:",calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])
     cantidad = 1 # int(Resultados.objects.all().count()+1)
     print(Dia.objects.filter(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])))
-    return Dia.objects.get(dia_semana="miércoles").id
+    return Dia.objects.get(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])).id
 
 
 #establecer Hora Siguiente de los resultados
 def establecerHoraActual():
 
     #Este locale es para cambiar el idioma al español
-    locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+    locale.setlocale(locale.LC_ALL,"es_ES.UTF-8")
     tiempo = datetime.now()
     #print("Numero de la semana actual: ",numero_semana[1])
 
@@ -159,14 +159,14 @@ class Dia(models.Model):
     def save(self, *args, **kwargs): 
 
         #Colocamos el codigo de la semana internamente
-        tiempo = datetime.datetime.now()
+        tiempo = datetime.now()
         dia_semana = calendar.weekday(tiempo.year,tiempo.month,tiempo.day)
         #print(dia_semana)
 
         #Este locale es para cambiar el idioma al español
-        locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+        locale.setlocale(locale.LC_ALL,"es_ES.UTF-8")
         diaPrueba = list(calendar.day_name)
-        #print("dia de hoy: ",diaPrueba)
+        print("dia de hoy: ",diaPrueba)
         #print("Dia elegido: ",self.dia_semana)
         #self.digito_dia_semana = 0
         self.digito_dia_semana = diaPrueba.index(str(self.dia_semana))
@@ -274,7 +274,7 @@ class Resultados(models.Model):
             #self.auto_inc_id = Resultados.objects.all().count() + 1
             #Tiempo actual
             #Este locale es para cambiar el idioma al español
-            #locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+            #locale.setlocale(locale.LC_ALL,"es_ES.UTF-8")
             #tiempo = datetime.now()
             #print("Numero de la semana actual: ",numero_semana[1])
 

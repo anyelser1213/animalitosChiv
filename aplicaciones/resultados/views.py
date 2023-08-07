@@ -35,7 +35,7 @@ class ListaResultados(TemplateView):
         #print("Numero de la semana actual: ",numero_semana[1])
 
         #Este locale es para cambiar el idioma al español
-        locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
+        locale.setlocale(locale.LC_ALL,"es_ES.UTF-8")
 
         #Esta funcion esta relacionada a las fechas en python
         informacionCalendario()
