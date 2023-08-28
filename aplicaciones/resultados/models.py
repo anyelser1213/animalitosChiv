@@ -127,6 +127,14 @@ def imagen_signos(instance, filename):
     print(instance.nombre)
     return 'signos/{0}/{1}'.format(instance.nombre, filename)
 
+def imagen_numeros(instance, filename):
+  
+    # file will be uploaded to MEDIA_ROOT / user_<id>/<filename>
+    print(instance)
+    print(instance.id)
+    print(instance.nombre)
+    return 'numeros/{0}/{1}'.format(instance.nombre, filename)
+
 
 
 ############ MODELOS A USAR #######################
@@ -225,6 +233,23 @@ class Signos(models.Model):
         verbose_name_plural = "4.Signoss"
 
 
+class Numeros(models.Model):
+    nombre = models.CharField(max_length=30,unique=True)
+    imagen = models.ImageField("Imagen de Numeros", upload_to=imagen_numeros,default="media/perfil/default.png", max_length=200,blank=True,null=True)
+
+
+    def __str__(self):
+         return self.nombre
+
+    
+
+
+    class Meta:
+
+        verbose_name = "5.Numero"
+        verbose_name_plural = "5.Numeros"
+
+
 #aqui hacemos algo
 
 
@@ -244,6 +269,7 @@ class Resultados(models.Model):
     
     animalito = models.ForeignKey(Animalitos,on_delete=models.CASCADE,blank=False, null=False)
     terminal= models.PositiveIntegerField(default=0)
+    numero_foto = models.ForeignKey(Numeros,on_delete=models.CASCADE,blank=False, null=False)
     signo = models.ForeignKey(Signos,on_delete=models.CASCADE,blank=False, null=False)
     
     fecha_resultado = models.DateField(auto_now_add=False,auto_now=False,blank=False,default=dia_mes_actual) #Solo fecha
@@ -261,8 +287,8 @@ class Resultados(models.Model):
 
     class Meta:
 
-        verbose_name = "5.Resultado"
-        verbose_name_plural = "5.Resultados"
+        verbose_name = "6.Resultado"
+        verbose_name_plural = "6.Resultados"
 
         ordering = ('hora',)
 

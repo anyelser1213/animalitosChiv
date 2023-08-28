@@ -8,6 +8,7 @@ from aplicaciones.resultados.models import *
 admin.site.register(Hora)
 admin.site.register(Animalitos)
 admin.site.register(Signos)
+admin.site.register(Numeros)
 
 
 
