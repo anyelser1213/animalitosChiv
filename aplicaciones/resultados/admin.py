@@ -51,7 +51,7 @@ class ResultadosAdmin(admin.ModelAdmin):
     #Aqui es cuando se va a editar
     fieldsets = (
         #Aqui es para editar
-        ("Informacion Esencial", {'fields': ('sorteo','dia','hora','animalito','terminal','signo','fecha_resultado')}),
+        ("Informacion Esencial", {'fields': ('sorteo','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado')}),
         
     )
 
@@ -59,19 +59,19 @@ class ResultadosAdmin(admin.ModelAdmin):
     add_fieldsets = (
         ("Registro", {
             'classes': ('wide',),
-            'fields': ('semana','dia','hora','animalito','terminal','signo','fecha_resultado'),
+            'fields': ('semana','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado'),
         }),
     )
 
 
     #Para indicarle al admin que campos queremos mostrar
-    list_display = ('id','sorteo','semana','dia','hora','animalito','terminal','signo','fecha_resultado')
+    list_display = ('id','sorteo','semana','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado')
     
     #list_display = ('username', 'email','is_superuser','admin','rol','plan_elegido')
-    list_filter = ('sorteo','dia','hora','animalito','terminal','signo','fecha_resultado')
+    list_filter = ('sorteo','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado')
     
     #Para especificar que campos van a efectuar la busqueda
-    search_fields = ('sorteo','hora','dia','animalito','terminal','signo','fecha_resultado')
+    search_fields = ('sorteo','hora','dia','animalito','terminal','numero_foto','signo','fecha_resultado')
     filter_horizontal = ()
 
 

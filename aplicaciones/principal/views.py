@@ -20,7 +20,7 @@ from aplicaciones.resultados.models import Dia,Hora,Resultados
 
 class Index(TemplateView):
 
-    template_name = "principal/index2.html"
+    template_name = "principal/index.html"
     #template_name = "principal/index.html"
 
     def dispatch(self, request, *args, **kwargs):
@@ -39,7 +39,7 @@ class Index(TemplateView):
 
 
         #Este locale es para cambiar el idioma al español
-        locale.setlocale(locale.LC_ALL,"es_M.UTF-8")
+        locale.setlocale(locale.LC_ALL,"es_MX.UTF-8")
 
         horario_actual = datetime.now()
         print("dia semana: ",horario_actual.weekday())

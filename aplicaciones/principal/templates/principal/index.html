@@ -1,73 +1,306 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
 {% load static %}
-{% block titulo %}Resultados {% endblock %}
-
-{% block EnlacesPersonalizados %}
-
-    <link rel="stylesheet" href="{% static 'principal/css/estilo.css' %}">
-
+{% load ceros_adelante %}
+<html style="font-size: 16px;" lang="es">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Resultados">
+    <meta name="description" content="">
+    <title>Inicio</title>
+    <link rel="stylesheet" href="{% static 'plantilla/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'plantilla/Inicio.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'plantilla/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'plantilla/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.15.1, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
-
     
-
-{% endblock %}
-
     
-{% block contenedor %} 
-
-<div class="container mt-5 border">
-
-  <div class="row justify-content-md-center">
-    <div class="col col-lg-4">
-      <a href="{% url 'principal:index' %}">
-        <img src="{% static 'principal/img/casa.png' %}" width="10%">
-      </a>
-    </div>
-    <div class="col col-lg-4">
-      <a href="{% url 'resultados:listaResultados' %}"><button type="button" class="btn btn-primary btn-lg btn-sm">Resultados anteriores <img src="{% static 'principal/img/lupa.png' %}" width="8%"> </button></a>
-    </div>
-    <div class="col col-lg-4">
-
-      
-    </div>
     
-  </div>
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "",
+		"logo": "images/default-logo.png"
 
-  {% for resultado in resultados %}
+    }
 
-               
-    <div class="row justify-content-center text-center align-items-center  mt-5 ms-5 mx-5 mb-5 divborder  ">
-      <div class="text-center ">
-        <!--Aqui se colocaran los resultados-->
-        <div class="card-body  ">
-          <h5 class="card-title pb-3">000{{resultado.sorteo}}</h5>
-          <h6 class="card-subtitle mb-2 text-muted"></h6>
+    </script>
 
-              <img src="{{resultado.animalito.imagen.url}}" class="imagenPrimaria">
-              <p class="d-inline letraTamaño ">-{{resultado.terminal}}</p>
-              <img src="{{resultado.signo.imagen.url}}" class="imagenSegunda " >
-              
-          <h5 class="card-title pt-3 letraHora">{{resultado.hora}}</h5>
-          
-          <!--
-          <a href="#" class="card-link">Card link</a>
-          <a href="#" class="card-link">Another link</a>
-          -->
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Inicio">
+    <meta property="og:type" content="website">  
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+  </head>
+
+    <body data-home-page="Inicio.html" data-home-page-title="Inicio" class="u-body u-xl-mode" data-lang="es">
+      <header class="u-clearfix u-header u-palette-3-light-3 u-header" id="sec-457c"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+          <a href="https://nicepage.com" class="u-image u-logo u-image-1">
+            <img src="images/default-logo.png" class="u-logo-image u-logo-image-1">
+          </a>
+          <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+            <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+              <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="#">
+                <svg class="u-svg-link" viewBox="0 0 24 24"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#menu-hamburger"></use></svg>
+                <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect></g></svg>
+              </a>
+            </div>
+            <div class="u-custom-menu u-nav-container">
+              <ul class="u-nav u-unstyled u-nav-1">
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Inicio.html" style="padding: 10px 20px;">Inicio</a></li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Contacto.html" style="padding: 10px 20px;">Contacto</a></li>
+                <li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="Resulados-Anteriores.html" style="padding: 10px 20px;">Resultados Anteriores</a></li>
+              </ul>
+            </div>
+            <div class="u-custom-menu u-nav-container-collapse">
+              <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+                <div class="u-inner-container-layout u-sidenav-overflow">
+                  <div class="u-menu-close"></div>
+                    <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2">
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Inicio.html">Inicio</a></li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Contacto.html">Contacto</a></li>
+                      <li class="u-nav-item"><a class="u-button-style u-nav-link" href="Resulados-Anteriores.html">Resulados Anteriores</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+            </div>
+          </nav>
         </div>
-      </div>
+      </header>
+
+      <section class="u-clearfix u-palette-3-light-3 u-section-1" id="sec-63ba">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+          <div class="u-border-1 u-border-grey-40 u-container-style u-group u-radius-50 u-shape-round u-group-1">
+            <div class="u-container-layout u-valign-middle u-container-layout-1">
+              <h1 class="u-align-center u-text u-text-default u-text-1">Resultados</h1>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-align-center u-clearfix u-gradient u-section-2" id="sec-4424">
+        <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+          <div class="u-expanded-width u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
+
+              <!--SORTEO 11:00AM--->
+              {% if resultado11am %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo {% ceros_en_sorteo resultado11am.sorteo %}</p>
+                  <h5 class="u-text u-text-2">Hora 11:00 AM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{{resultado11am.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{{resultado11am.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultado11am.numero_foto.imagen.url}}">
+                  
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">Hora 11:00 AM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+
+              <!--SORTEO 12:00AM--->
+              {% if resultado12pm %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-2">
+                  <p class="u-text u-text-3">Sorteo {% ceros_en_sorteo resultado12pm.sorteo %}</p>
+                  <h5 class="u-text u-text-4">Hora 12:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-4" data-image-width="1080" data-image-height="1080" src="{{resultado12pm.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-5" data-image-width="1080" data-image-height="1080" src="{{resultado12pm.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultado12pm.numero_foto.imagen.url}}">
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">Hora 12:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+
+
+              <!--SORTEO 01:00PM--->
+              {% if resultado01pm %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-3">
+                  <p class="u-text u-text-5">Sorteo {% ceros_en_sorteo resultado01pm.sorteo %}</p>
+                  <h5 class="u-text u-text-6">Hora 1:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-7" data-image-width="1080" data-image-height="1080" src="{{resultado01pm.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-8" data-image-width="1080" data-image-height="1080" src="{{resultado01pm.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultado01pm.numero_foto.imagen.url}}">
+                  
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">Hora 01:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="u-align-center u-clearfix u-gradient u-section-3" id="sec-3aa7">
+        <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+          <div class="u-expanded-width u-list u-list-1">
+            <div class="u-repeater u-repeater-1">
+
+              <!--SORTEO 04:00PM--->
+              {% if resultado04pm %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo {% ceros_en_sorteo resultado04pm.sorteo %}</p>
+                  <h5 class="u-text u-text-2">Hora 4:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-7" data-image-width="1080" data-image-height="1080" src="{{resultado04pm.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-8" data-image-width="1080" data-image-height="1080" src="{{resultado04pm.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultado04pm.numero_foto.imagen.url}}">
+                  
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">Hora 04:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+
+
+              <!--SORTEO 07:00PM--->
+              {% if resultado07pm %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-2">
+                  <p class="u-text u-text-3"> Sorteo {% ceros_en_sorteo resultado07pm.sorteo %}</p>
+                  <h5 class="u-text u-text-4">Hora 7:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-7" data-image-width="1080" data-image-height="1080" src="{{resultado07pm.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-8" data-image-width="1080" data-image-height="1080" src="{{resultado07pm.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultado07pm.numero_foto.imagen.url}}">
+                 
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">Hora 04:00 PM</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+              <!--SORTEO ESPECIAL--->
+              {% if resultadoEspecial %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-3">
+                  <p class="u-text u-text-5"> Sorteo {% ceros_en_sorteo resultadoEspecial.sorteo %}</p>
+                  <h5 class="u-text u-text-6">ESPECIAL</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-7" data-image-width="1080" data-image-height="1080" src="{{resultadoEspecial.animalito.imagen.url}}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-8" data-image-width="1080" data-image-height="1080" src="{{resultadoEspecial.signo.imagen.url}}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{{resultadoEspecial.numero_foto.imagen.url}}">
+                 
+                </div>
+              </div>
+
+              {% else %}
+
+              <div class="u-align-center u-container-style u-list-item u-repeater-item">
+                <div class="u-container-layout u-similar-container u-container-layout-1">
+                  <p class="u-text u-text-1">Sorteo ...</p>
+                  <h5 class="u-text u-text-2">ESPECIAL</h5>
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-1" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-arrej.png' %}">
+                  <img alt="" class="u-image u-image-round u-radius-30 u-image-2" data-image-width="1080" data-image-height="1080" src="{% static 'plantilla/imagen_default/logo-untao.png' %}">
+                  <img alt="" class="u-image u-image-circle u-image-3" data-image-width="450" data-image-height="450" src="{% static 'plantilla/imagen_default/logo-numero-default.png' %}">
+                  
+                </div>
+              </div>
+
+              {% endif %}
+
+
+            </div>
+          </div>
+        </div>
+      </section>
       
-    </div>                                               
-
-                                                        
-                                                        
-  {% endfor %}
-
-  
-
-
-</div>
-     
       
-            
-          
-{% endblock %}
+      
+      <footer class="u-align-center u-clearfix u-footer u-palette-2-dark-1 u-footer" id="sec-c09c">
+        <div class="u-clearfix u-sheet u-sheet-1">
+          <p class="u-small-text u-text u-text-variant u-text-1">Texto de muestra. Haz click para seleccionar el elemento de Texto.</p>
+        </div>
+      </footer>
+        <!--
+      <section class="u-backlink u-clearfix u-grey-80">
+        <a class="u-link" href="https://nicepage.com/one-page-template" target="_blank">
+          <span>One Page Template</span>
+        </a>
+        <p class="u-text">
+          <span>created with</span>
+        </p>
+        <a class="u-link" href="https://nicepage.com/website-builder" target="_blank">
+          <span>Website Builder</span>
+        </a>. 
+      </section>
+      -->
+    
+  </body>
+</html>
