@@ -1,99 +1,131 @@
-{% extends "base.html" %}
-{% load tag_consultas_resultados %}
+<!DOCTYPE html>
 {% load static %}
-{% block titulo %}Resultados {% endblock %}
-
-
-
-{% block EnlacesPersonalizados %}
-
-    <link rel="stylesheet" href="{% static 'principal/css/estilo.css' %}">
-
-    <style>
-
-      table{
-        width:100%;
-      }
-
-
-    </style>
-
-    <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
-
+{% load tag_consultas_resultados %}
+<html style="font-size: 16px;" lang="es"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="{% static 'plantilla/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'plantilla/Resultados-Anteriores.css' %}" media="screen">
+    <script class="u-script" type="text/javascript" src="{% static 'plantilla/jquery.js' %}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{% static 'plantilla/nicepage.js' %}" defer=""></script>
+    <meta name="generator" content="Nicepage 5.15.1, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
-
     
-
-{% endblock %}
-
     
-{% block contenedor %} 
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Resulados Anteriores">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body class="u-body u-xl-mode" data-lang="es">
+    
+    
+    <!--Aqui se incluye el menu superior-->
+    {% include "menu_superior2.html" with tema="index"    %}
 
-<div class="container mt-5 border">
-
-  <div class="row justify-content-md-center">
-    <div class="col col-lg-12 ">
-      <a href="{% url 'principal:index' %}">
-      <img src="{% static 'principal/img/casa.png' %}" width="6%">
-    </a>
-    </div>
-  </div>
-
-    <br>
-    <h2>Semana: {{fecha_semana_inicial}} al {{fecha_semana_final}} </h2>
-
-  
-    <div class="row table-responsive ">
-        <div clas="table">
-          <table class="table table-bordered" >
-              <thead>
-              <tr style="width:200px;">
-                  <th>Hora</th>
-                  <th>Lunes</th>
-                  <th>Martes</th>
-                  <th>Miercoles</th>
-                  <th>Jueves</th>
-                  <th>Viernes</th>
-                  <th>Sabado</th>
-                  <th>Domingo</th>
+    <section class="u-clearfix u-palette-3-light-3 u-section-2" id="sec-afff">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <div class="u-border-1 u-border-grey-10 u-container-style u-group u-palette-3-light-3 u-radius-50 u-shape-round u-group-1">
+          <div class="u-container-layout u-valign-middle u-container-layout-1">
+            <p class="u-align-center u-text u-text-default u-text-1">Resultados semana {{fecha_semana_inicial}} al {{fecha_semana_final}}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-palette-3-light-3 u-section-3" id="sec-967f">
+      <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+          
+          {% formateo_fecha fecha_semana_inicial as fecha_inicial %}
+          
+          <a href="{% url 'resultados:SemanaAnterior' fecha_inicial semana %}" class="u-border-1 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-palette-3-light-1 u-palette-3-light-3 u-radius-50 u-btn-1">&lt;anterior</a>
+          
+          <!---ESTE CONDICIONAL ES PARA VERIFICAR SI ES LA ACTUAL Y NO DEBE MOSTRARSE SIGUIENTE--->
+        {% if semana_actual %}
+      
+        {% else %}
+          
+          {% formateo_fecha fecha_semana_final as fecha_final %}
+          
+          <a href="{% url 'resultados:SemanaSiguiente' fecha_inicial semana %}" class="u-border-1 u-border-grey-75 u-btn u-btn-round u-button-style u-hover-palette-3-light-1 u-palette-3-light-3 u-radius-50 u-btn-2">siguiente&gt;</a>
+        
+          {% endif %}
+        
+        
+      </div>
+    </section>
+    <section class="u-align-center u-clearfix u-gradient u-section-4" id="sec-7a2b">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-expanded-width u-table u-table-responsive u-table-1">
+          <table class="u-table-entity u-table-entity-1">
+            <colgroup>
+              <col width="3.5%">
+              <col width="12.7%">
+              <col width="13.3%">
+              <col width="13.6%">
+              <col width="13.1%">
+              <col width="13.9%">
+              <col width="15.2%">
+              <col width="14.6%">
+            </colgroup>
+            <thead class="u-palette-4-base u-table-header u-table-header-1">
+              <tr style="height: 37px;">
+                <th class="u-border-1 u-border-palette-3-light-3 u-palette-3-light-3 u-table-cell u-table-cell-1">Horas&nbsp;</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-2">lunes</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-3">Martes</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-4">Miercoles</th>
+                <th class="u-border-1 u-border-palette-3-light-3 u-palette-3-light-3 u-table-cell u-table-cell-5">Jueves</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-6">Viernes</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-7">Sabado</th>
+                <th class="u-palette-3-light-3 u-table-cell u-table-cell-8">Domingo</th>
               </tr>
-              </thead>
-              <tbody>
-                {% for hora in horas %}
-                  <tr style="width:100%;height:100%;" >
-                      <td >{{hora}}</td>
+            </thead>
+            <tbody class="u-gradient u-table-body u-table-body-1">
+              {% for hora in horas %}
+                  <tr style="height: 75px;" >
+                    <td class="u-border-1 u-border-grey-30 u-first-column u-grey-5 u-table-cell u-table-cell-9">{{hora}}</td>
+                      
+
                       {% for dia in dias %}
                       {% obtener_resultados semana dia hora %}
                       {% endfor %}
 
                   </tr>
               {% endfor %}
-              </tbody>
+
+              
+
+            </tbody>
           </table>
-          
+        </div>
       </div>
-    </div>
+    </section>
+    
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-palette-2-dark-1 u-footer" id="sec-c09c"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Texto de muestra. Haz click para seleccionar el elemento de Texto.</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/css-templates" target="_blank">
+        <span>Free CSS Templates</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="https://nicepage.com/website-builder" target="_blank">
+        <span>Best Free Website Builder</span>
+      </a>. 
+    </section>
+  
+</body></html>
 
-  <div class="row align-items-center">
-    <div class="col col-lg-6 text-center">
-      {% formateo_fecha fecha_semana_inicial as fecha_inicial %}
-      <a href="{% url 'resultados:SemanaAnterior' fecha_inicial semana %}"><button type="button" class="btn btn-primary btn-lg btn-sm ">Semana Anterior  </button></a>
-      
-    </div>
-
-    <div class="col col-lg-6 text-center">
-      {% if semana_actual %}
-      
-      {% else %}
-        {% formateo_fecha fecha_semana_final as fecha_final %}
-        <a href="{% url 'resultados:SemanaSiguiente' fecha_inicial semana %}"><button type="button" class="btn btn-primary btn-lg btn-sm">Semana Siguiente  </button></a>
-      {% endif %}
-    </div>
-  </div>
-
-</div>
-     
-      
-            
-          
-{% endblock %}

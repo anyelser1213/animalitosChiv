@@ -10,8 +10,8 @@ urlpatterns = [
     #path('', views.Index.as_view(), name='index'),
     
     path('listaResultados/', views.ListaResultados.as_view() ,name="listaResultados"),
-    path('semana anterior/<slug:fecha>/<int:semana>/', views.ListaResultadosAnteriores ,name="SemanaAnterior"),
-    path('semana siguiente/<slug:fecha>/<int:semana>/', views.ListaResultadosSiguientes ,name="SemanaSiguiente"),
+    path('semanaAnterior/<slug:fecha>/<int:semana>', views.ListaResultadosAnteriores ,name="SemanaAnterior"),
+    path('semanaSiguiente/<slug:fecha>/<int:semana>', views.ListaResultadosSiguientes ,name="SemanaSiguiente"),
 
 
     

@@ -63,12 +63,13 @@ class ListaResultados(TemplateView):
         #Todas las variables que necesitamos
         #context['mes'] = "julio"
 
+        print("semana actual: ",SEM.now().isocalendar()[1])
         #Asi obtenemos la semana actual
-        context['semana'] = SEM.now().isocalendar()[1]
+        context['semana'] = int(SEM.now().isocalendar()[1])
         #print("semana ingresada: ",context['semana'])
         context['semana_actual'] = True
 
-        #Asi obtenemos la fecha inicial y final
+        #Asi obtenemos la fecha inicial y final( I = inicial, F= final)
         context['fecha_semana_inicial'], context['fecha_semana_final'] = fecha_I_F()
         #print("fecha: ",context['fecha_semana_inicial'])
         #print("fecha: ",type(context['fecha_semana_inicial']))

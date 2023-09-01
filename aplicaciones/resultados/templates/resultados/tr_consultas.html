@@ -1,43 +1,15 @@
 
 {% if resultado %}
-<td style="width:300px;height:300px;">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-12 col-sm-12">
-                <p>Sort#{{resultado.sorteo}}</p>
-                <p class="d-inline-block "></p>
-            </div>
-            <div class="col-md-8 col-sm-10">
-                <img src="{{resultado.animalito.imagen.url}}" width=160% >
-                <p class="d-inline-block letraGrande  ">Term {{resultado.terminal}}</p>
-                <img src="{{resultado.signo.imagen.url}}" width=160% >
-            </div>
-            
-          </div>
-      </div>
-    
-    
-
-</td>
+<td class="u-align-center u-border-1 u-border-grey-30 u-table-cell">Sort:{{resultado.sorteo}}<br>
+    <span style="font-weight: 700;">{{resultado.animalito}}</span>
+    <br>{{resultado.terminal}}<br>
+    <span style="font-weight: 700;">{{resultado.signo}}</span>
+  </td>
 
 {% else%}
-
-<td style="width:200px;height:200px;">
-    
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-4 col-sm-2">
-                <p></p>
-                <p class="d-inline-block ">{{resultado.sorteo}}</p>
-            </div>
-            <div class="col-md-8 col-sm-10">
-                <img src="{{resultado.animalito.imagen.url}}" width=40% >
-                <p class="d-inline-block ">{{resultado.terminal}}</p>
-                <img src="{{resultado.signo.imagen.url}}" width=40% >
-            </div>
-            
-          </div>
-      </div>
-
-</td>
+<td class="u-align-center u-border-1 u-border-grey-30 u-table-cell"><br>
+    <span style="font-weight: 700;"></span>
+    <br><br>
+    <span style="font-weight: 700;"></span>
+  </td>
 {% endif %}
