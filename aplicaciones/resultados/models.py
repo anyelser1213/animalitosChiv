@@ -133,6 +133,7 @@ def imagen_numeros(instance, filename):
     print(instance)
     print(instance.id)
     print(instance.nombre)
+    print("imagen_numero....")
     return 'numeros/{0}/{1}'.format(instance.nombre, filename)
 
 
@@ -324,7 +325,9 @@ class Resultados(models.Model):
             #print("dia: ",self.fecha_resultado.day)
             #print("hora: ",self.fecha_resultado.hour)
             #print("minuto: ",self.fecha_resultado.minute)
-            #print("segundo: ",self.fecha_resultado.second)
+            #print("foto: ",self.fecha_resultado.second)
+            self.terminal = self.numero_foto.nombre
+            print()
 
             print("-----------------------------")
 

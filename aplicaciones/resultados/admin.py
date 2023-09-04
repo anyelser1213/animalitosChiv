@@ -51,7 +51,7 @@ class ResultadosAdmin(admin.ModelAdmin):
     #Aqui es cuando se va a editar
     fieldsets = (
         #Aqui es para editar
-        ("Informacion Esencial", {'fields': ('sorteo','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado')}),
+        ("Informacion Esencial", {'fields': ('sorteo','dia','hora','animalito','numero_foto','signo','fecha_resultado')}),
         
     )
 
@@ -59,7 +59,7 @@ class ResultadosAdmin(admin.ModelAdmin):
     add_fieldsets = (
         ("Registro", {
             'classes': ('wide',),
-            'fields': ('semana','dia','hora','animalito','terminal','numero_foto','signo','fecha_resultado'),
+            'fields': ('semana','dia','hora','animalito','numero_foto','signo','fecha_resultado'),
         }),
     )
 
