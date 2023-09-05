@@ -269,7 +269,7 @@ class Resultados(models.Model):
     hora = models.ForeignKey(Hora,default=establecerHoraActual,on_delete=models.CASCADE, blank=False,null=False)#Solo hora
     
     animalito = models.ForeignKey(Animalitos,on_delete=models.CASCADE,blank=False, null=False)
-    terminal= models.PositiveIntegerField(default=0)
+    #terminal= models.PositiveIntegerField(default=0)
     numero_foto = models.ForeignKey(Numeros,on_delete=models.CASCADE,blank=False, null=False)
     signo = models.ForeignKey(Signos,on_delete=models.CASCADE,blank=False, null=False)
     
@@ -277,7 +277,7 @@ class Resultados(models.Model):
 
 
     def __str__(self):
-         return str(self.sorteo)+" --- "+str(self.hora)+" --- "+str(self.animalito.nombre)+" --- "+str(self.terminal)+" --- "+str(self.signo.nombre)
+         return str(self.sorteo)+" --- "+str(self.hora)+" --- "+str(self.animalito.nombre)+" --- "+str(self.signo.nombre)
     
     def obtenerImagenAnimalito(self):
       
@@ -326,7 +326,7 @@ class Resultados(models.Model):
             #print("hora: ",self.fecha_resultado.hour)
             #print("minuto: ",self.fecha_resultado.minute)
             #print("foto: ",self.fecha_resultado.second)
-            self.terminal = self.numero_foto.nombre
+            #self.terminal = self.numero_foto.nombre
             print()
 
             print("-----------------------------")
