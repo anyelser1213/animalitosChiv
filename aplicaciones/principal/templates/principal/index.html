@@ -15,8 +15,52 @@
     <meta name="generator" content="Nicepage 5.15.1, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     
+    <!---LIBRERIA PARA HACER IMAGENES--->
+    <script type="text/javascript" src="{% static 'vendor/html2canvas/js/html2canvas.hertzen.com_dist_html2canvas.min.js' %}"></script>
     
     
+    <script>
+
+      function prueba(){
+
+        console.log("Probando aqui..."+ this.id);
+        const imagenExportada = document.getElementById(""+this.id);
+        //const imagenExportada = document.getElementById("capture");
+
+        html2canvas(imagenExportada).then(canvas => {
+
+          console.log(canvas);
+          //canvas.allowTaint=false;
+          //var  canvas = document.createElement("canvas");
+          //canvas.setAttribute('width', 100);
+          //canvas.setAttribute('height', 100);
+          //var ctx = canvas.getContext('2d');
+          //context.scale(5, 5);
+          //ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, 1080,1080);
+          //var dataURL = _canvas.toDataURL(); 
+
+
+          var base64image = canvas.toDataURL("image/png");
+          canvas.setAttribute('width', '1080px');
+          canvas.setAttribute('height', '1080px');
+          //var ctx = canvas.getContext('2d');
+          //ctx.drawImage(canvas, 0, 0, canvas.width, canvas.height, 0, 0, 1080, 1080);
+          var anchor = document.createElement("a");
+          anchor.setAttribute('width', '1080px');
+          anchor.setAttribute('height', '1080px');
+          anchor.setAttribute("href",base64image);
+          anchor.setAttribute("download","sorteo.jpg");
+          anchor.click();
+          anchor.remove();
+          document.body.appendChild(canvas)
+      });
+
+      //console.log("Probando todo")
+
+      }//fin de la funcion
+
+
+    </script>
     
     
     <script type="application/ld+json">{
@@ -61,7 +105,7 @@
             <!--SORTEO 11:00AM--->
             {% if resultado11am %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_11" >
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo {% ceros_en_sorteo resultado11am.sorteo %}</p>
                 <h5 class="u-text u-text-2">Hora 11:00 AM</h5>
@@ -74,7 +118,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_11" >
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">Hora 11:00 AM</h5>
@@ -91,7 +135,7 @@
             <!--SORTEO 12:00AM--->
             {% if resultado12pm %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_12">
               <div class="u-container-layout u-similar-container u-container-layout-2">
                 <p class="u-text u-text-3">Sorteo {% ceros_en_sorteo resultado12pm.sorteo %}</p>
                 <h5 class="u-text u-text-4">Hora 12:00 PM</h5>
@@ -103,7 +147,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_12">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">Hora 12:00 PM</h5>
@@ -119,7 +163,7 @@
             <!--SORTEO 01:00PM--->
             {% if resultado01pm %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_01">
               <div class="u-container-layout u-similar-container u-container-layout-3">
                 <p class="u-text u-text-5">Sorteo {% ceros_en_sorteo resultado01pm.sorteo %}</p>
                 <h5 class="u-text u-text-6">Hora 1:00 PM</h5>
@@ -132,7 +176,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_01">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">Hora 01:00 PM</h5>
@@ -160,7 +204,7 @@
             <!--SORTEO 04:00PM--->
             {% if resultado04pm %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_04">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo {% ceros_en_sorteo resultado04pm.sorteo %}</p>
                 <h5 class="u-text u-text-2">Hora 4:00 PM</h5>
@@ -173,7 +217,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_04">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">Hora 04:00 PM</h5>
@@ -191,7 +235,7 @@
             <!--SORTEO 07:00PM--->
             {% if resultado07pm %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_07">
               <div class="u-container-layout u-similar-container u-container-layout-2">
                 <p class="u-text u-text-3"> Sorteo {% ceros_en_sorteo resultado07pm.sorteo %}</p>
                 <h5 class="u-text u-text-4">Hora 7:00 PM</h5>
@@ -204,7 +248,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_07">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">Hora 07:00 PM</h5>
@@ -220,7 +264,7 @@
             <!--SORTEO ESPECIAL--->
             {% if resultadoEspecial %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_especial">
               <div class="u-container-layout u-similar-container u-container-layout-3">
                 <p class="u-text u-text-5"> Sorteo {% ceros_en_sorteo resultadoEspecial.sorteo %}</p>
                 <h5 class="u-text u-text-6">ESPECIAL</h5>
@@ -233,7 +277,7 @@
 
             {% else %}
 
-            <div class="u-align-center u-container-style u-list-item u-repeater-item">
+            <div class="u-align-center u-container-style u-list-item u-repeater-item" id="captura_especial">
               <div class="u-container-layout u-similar-container u-container-layout-1">
                 <p class="u-text u-text-1">Sorteo ...</p>
                 <h5 class="u-text u-text-2">ESPECIAL</h5>
@@ -272,6 +316,21 @@
         </a>. 
       </section>
       -->
+
+
+      <script>
+
+        //Creamos los eventos escuchadores
+        document.getElementById("captura_11").addEventListener("click",prueba);
+        document.getElementById("captura_12").addEventListener("click",prueba);
+        document.getElementById("captura_01").addEventListener("click",prueba);
+        document.getElementById("captura_04").addEventListener("click",prueba);
+        document.getElementById("captura_07").addEventListener("click",prueba);
+        document.getElementById("captura_especial").addEventListener("click",prueba);
+
+
+      </script>
+      
     
   </body>
 </html>

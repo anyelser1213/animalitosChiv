@@ -190,7 +190,7 @@ class Hora(models.Model):
     #imagen = models.ImageField("Imagen de Animalitos", upload_to=imagen_animalitos,default="media/perfil/default.png", max_length=200,blank=True,null=True)
 
     def __str__(self):
-         return str(self.hora.strftime('%I:%M%p'))
+         return str(self.hora.strftime('%I:%M %p'))
     
     class Meta:
 
@@ -277,7 +277,7 @@ class Resultados(models.Model):
 
 
     def __str__(self):
-         return str(self.sorteo)+" --- "+str(self.hora)+" --- "+str(self.animalito.nombre)+" --- "+str(self.signo.nombre)
+         return str(self.sorteo)+" --- "+str(self.hora.__str__)+" --- "+str(self.animalito.nombre)+" --- "+str(self.numero_foto.nombre)+" --- "+str(self.signo.nombre)
     
     def obtenerImagenAnimalito(self):
       
