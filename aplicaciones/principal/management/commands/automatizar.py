@@ -39,11 +39,25 @@ class Command(BaseCommand):
         if Hora.objects.all().count()>1:
             pass
         else:
+
+            #POR SI ACASO
+            """
             hora_11_00 = Hora.objects.create(hora=time(11,0,00))
             hora_12_00 = Hora.objects.create(hora=time(12,0,00))
             hora_01_00 = Hora.objects.create(hora=time(13,0,00))
             hora_04_00 = Hora.objects.create(hora=time(16,0,00))
             hora_07_00 = Hora.objects.create(hora=time(19,0,00))
+            """
+
+
+            hora_12_00 = Hora.objects.create(hora=time(12,0,00))
+            hora_01_00 = Hora.objects.create(hora=time(13,0,00))
+            hora_04_00 = Hora.objects.create(hora=time(16,0,00))
+            hora_07_00 = Hora.objects.create(hora=time(19,0,00))
+            hora_11_00 = Hora.objects.create(hora=time(23,0,00))
+
+
+
 
         #Dias de la semana
         if Dia.objects.all().count()>1:

@@ -61,29 +61,34 @@ def establecerHoraActual():
     #dia actual
     dia_hoy = Dia.objects.get(dia_semana=str(calendar.day_name[calendar.weekday(tiempo.year,tiempo.month,tiempo.day)])).id
 
+    """
     hora_11_00 = Hora.objects.get(hora=time(11,0,00))
     hora_12_00 = Hora.objects.get(hora=time(12,0,00))
     hora_01_00 = Hora.objects.get(hora=time(13,0,00))
     hora_04_00 = Hora.objects.get(hora=time(16,0,00))
     hora_07_00 = Hora.objects.get(hora=time(19,0,00))
+    """
+
+    hora_12_00 = Hora.objects.get(hora=time(12,0,00))
+    hora_01_00 = Hora.objects.get(hora=time(13,0,00))
+    hora_04_00 = Hora.objects.get(hora=time(16,0,00))
+    hora_07_00 = Hora.objects.get(hora=time(19,0,00))
+    hora_11_00 = Hora.objects.get(hora=time(23,0,00))
 
     print("semana:", semana_actual)
 
 
-    print("11:00am: ",Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_11_00.id).count())
-    #Comenzamos los condicionales
-    #hoy con la hora de las 11:00am
-    if Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_11_00.id).count() < 1:
-        print("Probando con las 11:00am")
-        return hora_11_00.id
+    print("12:00pm: ",Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_12_00.id).count())
     
+    #Comenzamos los condicionales
     #hoy con la hora de las 12:00pm
-    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_12_00.id).count() < 1:
-        print("Probando con las 12:00am")
+    if Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_12_00.id).count() < 1:
+        print("Probando con las 12:00pm")
         return hora_12_00.id
-
+    
     #hoy con la hora de las 01:00pm
     elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_01_00.id).count() < 1:
+        print("Probando con las 01:00pm")
         return hora_01_00.id
 
     #hoy con la hora de las 04:00pm
@@ -94,9 +99,13 @@ def establecerHoraActual():
     elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_07_00.id).count() < 1:
         return hora_07_00.id
 
-    else:
-        print("Probando con las 11:00am")
+    #hoy con la hora de las 11:00pm
+    elif Resultados.objects.filter(semana=int(semana_actual),dia=dia_hoy,hora=hora_11_00.id).count() < 1:
         return hora_11_00.id
+
+    else:
+        print("Probando con las 12:00pm")
+        return hora_12_00.id
 
     
     
